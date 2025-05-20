@@ -1,8 +1,8 @@
 import json, asyncio
+from datetime import datetime
 from playwright.async_api import async_playwright
 
 def extract_zodiac_sign(birth_date):
-    from datetime import datetime
     date = datetime.strptime(birth_date, "%Y-%m-%d")
     zodiac = [
         ("Козерог", (1, 20)), ("Водолей", (2, 19)), ("Рыбы", (3, 20)), ("Овен", (4, 20)),
@@ -36,7 +36,7 @@ async def chatgpt_generate(prompt):
         await browser.close()
         return result
 
-def get_horoscope(date: str, period: str) -> str:
-    sign = extract_zodiac_sign(date)
+def get_horoscope(birth_date: str, period: str) -> str:
+    sign = extract_zodiac_sign(birth_date)
     prompt = f"Составь подробный гороскоп на {period} для знака зодиака {sign} на русском языке."
     return asyncio.run(chatgpt_generate(prompt))
