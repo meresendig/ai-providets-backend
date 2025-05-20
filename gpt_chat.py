@@ -36,7 +36,7 @@ async def chatgpt_generate(prompt):
         await browser.close()
         return result
 
-def get_horoscope(birth_date: str, period: str) -> str:
+  async def get_horoscope(birth_date: str, period: str) -> str:
     sign = extract_zodiac_sign(birth_date)
     prompt = f"Составь подробный гороскоп на {period} для знака зодиака {sign} на русском языке."
     return asyncio.run(chatgpt_generate(prompt))
