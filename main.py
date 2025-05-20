@@ -5,4 +5,4 @@ app = FastAPI()
 
 @app.post("/astrology/horoscope")
 async def horoscope(birth_date: str = Form(...), period: str = Form(...)):
-    return {"result": get_horoscope(birth_date, period)}
+    return {"result": await get_horoscope(birth_date, period)}
